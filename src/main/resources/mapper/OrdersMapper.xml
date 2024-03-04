@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.springboot.mapper.OrdersMapper">
+    <update id="updateByOrderNo">
+        update orders
+        <set>
+            <if test="payNo!=null">
+                pay_no=#{payNo},
+            </if>
+            <if test="payTime!=null">
+                pay_time=#{payTime},
+            </if>
+            <if test="status!=null">
+                status=#{status},
+            </if>
+        </set>
+            where order_no=#{orderNo};
+    </update>
+</mapper>

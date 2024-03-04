@@ -1,0 +1,55 @@
+# tomocat启动端口
+server:
+  port: 9090
+
+# 连接数据库的配置
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/qiu?serverTimezone=GMT%2b8
+    username: root
+    password: 123456
+  # 发送email设置，以QQ邮箱为例
+  mail:
+    host: smtp.qq.com             # 配置服务器 qq：smtp.qq.com，网易163:smtp.163.com
+    username: 2586597832@qq.com   # 配置发件人
+    password: hglwuqptfjwfecic    # 配置授权码，邮箱->设置->账户->POP3/SMTP服务:开启服务后会获得授权码
+    default-encoding: UTF-8       # 配置默认编码
+    properties:                   # 一些其他的配置
+      mail:
+        smtp:
+          ssl:
+            trust: mail.cmhk.com
+          timeout: 10000
+          connectiontimeout: 10000
+          writetimeout: 10000
+          auth: true
+          starttls:
+            enable: true
+            required: true
+          socketFactory:
+            class: javax.net.ssl.SSLSocketFactory
+            port: 465
+
+
+# 扫描所有mybatis的xml文件
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  #mybatis框架：打印执行的sql在控制台上
+  #configuration:
+  #  log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+mybatis-plus:
+  #mybatis-plus框架：打印执行的sql在控制台上
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+#文件上传路径
+files:
+  upload:
+    path: D:/Develop/JavaWebProject/Quotation_management_system/Vue_SpringBoot/SpringBoot/files/
+
+alipay:
+  appId: 9021000132609892
+  appPrivateKey: MIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCCG9UNs6OzxZn8F71am584sQ4vxt7uIlPElAwt+18hSlFxxSKeF7xhiyAbtiN27eOqgquoAKA6eTYl02UQslCJv3ALW6XSeY6AYeYaLgVRNPjY7XU4gKUPyr5ZOtpR7fA7tGrPHueLjKY5uTluDam4BxyKT9X3JuAtfLjlIJ2+yaaBGVdWBwhK7Bs3SBblP6Mu/bHg/uQidl52/b6U9Cu3W+4MhNkh6LAbbIW69DPXvWYuO0h4++3kTdImPmotpqO68wQ3ZnLItuJbIY49HogNggQWSGRGOQ89GgHAVwCqITU2oOxUTIHoHGEg7wujcwiSIGH3MzfrIzfLIIzjG3xrAgMBAAECggEALwsBLcMWHZoE4zFyNaCvIUBjcMLnOBMRVrJw9O8+pjrI1+n/akoKwvoa0eo5SHcbKju09TnEtV++RE76696NYEDnsjOg8UkiTSkYmb6qDYKpt0WkbJmXFO6phHnTFmyBwBSrydfSwJJKR/TA3xnxk6h+mUPkiUh1Jf1CnRX9801RT/B1Q9sg2S7if8Nfu8dGUx7/+wGoLXEFp3qS/Z63Zy24YlgJl9QI1n2K4ftuFInSwM+O5T9fc9O+LrlovmKW1dL+yJ2Tmb5xJ+tx6JfDh1tKuHBDvy03EbToEY7FNBoXW6dSflvMA3wn+G0B+oLqtRvUcEXl/Qm4Q3vzsa8ZgQKBgQDJ6aITaJWlgQCRTVxqlgBDymF2bsIeFETnaCDxkRyW7ERK9xoUXlKrNNAV+OCWd2PqYPuqSy/EuNVLU1UMi2hBFKXpqHrcG/r7SyZ2Ze7GSp8ymeJB8DqB1cpE1NkIyzOGEP5ssS5EVLSWNfbnrmVZTr10zhNkkrF17UJh/VlD/wKBgQCk9iwERROlozQDGb0B4e0+Q+IIWHbRpYQOj6NMqs2AVSYpZGhkfAyXXoEcRhIO8XaeFdK4vzAxmu2zkSTroyiMkBHDqLcUx9mwXwNItxqJl69I46X1knvOPHyTMRRHswfVocJ/OueBhBsX9lLzTa0Aaz7ego1ZRv0x6F3UqvUXlQKBgG/Jhg4wzQlAjsvjhNMOET93ANbNI3P7zNpBcFvN94IndPf8LtgwEJzxNHO1wsILf6n33928msnTe2Ok02WKmUHO6LygpsTOSPpv9O+AJ95o2hLt17KiCgJwFvhcz3xq5C/JoNMUlYUHUKQJZJWInFwBmCrfHSWFgfLEVQhjd9SJAoGAYMOSYFLQyomoWeVALJmFW8/gB/s0f5eylgQFy1QpxYytHPysC72EeUpTO+2SbDeR1/t/JyXnNEHoCzwpxxtnDsT31qjh9AujE0U4nO/jXjCe/oei8yEhBIIQpRrWBZTsFJGVkKJR6HRAnFa+o7+9qpA+SbGVDniIzzy5xaUerd0CgYB62VPQAtgCXpqWSdXZz3hhJGX6mEGhPnX2pVMsiAhlnA781jR4lKg2hrlrCXr0LR2PeDLCltyNxgEX0ZHMMLKiFxH/WUmZxn90pESS+Y6PRKIoqxB6JUk2fDsqiQWeEw/dKEGF87vQrWV3pPCDvEjmKjLF4BEeIfW3ZmKA8JpvEg==
+  alipayPublicKey: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAu6hTEfMbG2QJBhN0CxLzIyX6cmQpQYkOaL7xZ8VH/qhQgJgAqiD6DehgJTvR/eanx8f4WEP9d2jSa2SKvWeIBqy2c8txxMgr3uNou0TOYHuU8uItrw7zsUeRNHNVm603HKrlCkxmoaD1Q5ZyN2ZAIIJ47QPJ/AYnt8Vh7pG5LDyHzZBUHeXbmtPXPwFHYFXCKk9jVYT0HOrbxNNU6VQpJomzhUAVFVoB6ci6wHF2U6RE2LyYqIwziXSpK7yDE64BlizxrkDp0yqF0/XqGyZq8Bp8dH6VkNvErR6tNVKmZSsngZGvKLHMsYolkDjRwLpaOmxxgN/m1ZeSu2F2pcGRUQIDAQAB
+  notifyUrl: http://qe4sej.natappfree.cc/alipay/notify
